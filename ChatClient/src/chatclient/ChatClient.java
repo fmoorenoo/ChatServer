@@ -29,6 +29,10 @@ public class ChatClient {
             new Thread(new ReceptorMensajes(socket)).start();
             PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
             Scanner scanner = new Scanner(System.in);
+            if (!scanner.hasNextLine()) {
+                System.out.println("No se introdujo un nombre de usuario. Cerrando conexión.");
+                return;
+            }
             username = scanner.nextLine();
             salida.println(username);
             while (scanner.hasNextLine()) {
