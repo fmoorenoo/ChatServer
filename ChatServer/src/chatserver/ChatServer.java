@@ -21,6 +21,18 @@ public class ChatServer {
     // método principal
     public static void main(String[] args) {
         int serverPort = 9876;
+        if (args.length > 0) {
+            try {
+                serverPort = Integer.parseInt(args[0]);
+                if (serverPort < 1 || serverPort > 65535) {
+                    System.err.println("El puerto debe estar entre 1 y 65535.");
+                    return;
+                }
+            } catch (NumberFormatException ex) {
+                System.err.println("El puerto debe ser un número entero.");
+                return;
+            }
+        }
 
         try (ServerSocket serverSocket = new ServerSocket(serverPort)) {
             System.out.println("Servidor de chat iniciado en el puerto " + serverPort);
