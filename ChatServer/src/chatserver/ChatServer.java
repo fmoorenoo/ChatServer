@@ -96,8 +96,10 @@ public class ChatServer {
                 // El usuario abandona el chat.
                 // Actualizar la lista de clientes
                 try {
-                    clients.remove(this);
-                    broadcast("El usuario [" + username + "] ha abandonado el chat.", this);
+                    boolean estabaRegistrado = clients.remove(this);
+                    if (estabaRegistrado) {
+                        broadcast("El usuario [" + username + "] ha abandonado el chat.", this);
+                    }
                     socket.close();
                 } catch (IOException ex) {
                     System.out.println("Error al cerrar una conexión: " + ex.getMessage());
