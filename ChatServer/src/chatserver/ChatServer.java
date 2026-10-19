@@ -89,6 +89,9 @@ public class ChatServer {
 
                 String message;
                 while ((message = input.readLine()) != null) {
+                    if (message.isBlank()) {
+                        continue;
+                    }
                     broadcast("[" + username + "]: " + message, this);
                 }
             } catch (IOException ex) {
