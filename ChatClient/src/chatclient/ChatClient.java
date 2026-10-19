@@ -9,6 +9,18 @@ public class ChatClient {
     public static void main(String[] args) {
         String direccionServidor = args.length > 0 ? args[0] : "localhost";
         int puertoServidor = 9876;
+        if (args.length > 1) {
+            try {
+                puertoServidor = Integer.parseInt(args[1]);
+                if (puertoServidor < 1 || puertoServidor > 65535) {
+                    System.err.println("El puerto debe estar entre 1 y 65535.");
+                    return;
+                }
+            } catch (NumberFormatException ex) {
+                System.err.println("El puerto debe ser un número entero.");
+                return;
+            }
+        }
 
         ChatClient cliente = new ChatClient(direccionServidor, puertoServidor);
         cliente.iniciar();
