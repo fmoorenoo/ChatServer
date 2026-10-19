@@ -82,6 +82,8 @@ public class ChatServer {
                     return;
                 }
 
+                username = username.trim();
+
                 // Publicar el cliente solo cuando su canal de salida ya existe.
                 clients.add(this);
 
