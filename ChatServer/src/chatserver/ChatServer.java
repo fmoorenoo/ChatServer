@@ -31,7 +31,6 @@ public class ChatServer {
                 Socket clientSocket = serverSocket.accept();
 
                 ChatThread chatThread = new ChatThread(clientSocket);
-                clients.add(chatThread);
 
                 new Thread(chatThread).start();
             }
@@ -78,6 +77,12 @@ public class ChatServer {
                 output.println("Bienveido al chat.");
                 output.println("Ingresa tu nombre de usuario: ");
                 username = input.readLine();
+                if (username == null) {
+                    return;
+                }
+
+                // Publicar el cliente solo cuando su canal de salida ya existe.
+                clients.add(this);
 
                 broadcast("El suario [" + username + "] se ha unido al chat.", this);
 
