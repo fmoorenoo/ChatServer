@@ -22,8 +22,7 @@ public class ChatServer {
     public static void main(String[] args) {
         int serverPort = 9876;
 
-        try {
-            ServerSocket serverSocket = new ServerSocket(serverPort);
+        try (ServerSocket serverSocket = new ServerSocket(serverPort)) {
             System.out.println("Servidor de chat iniciado en el puerto " + serverPort);
 
             // Bucle aceptando clientes de chat
