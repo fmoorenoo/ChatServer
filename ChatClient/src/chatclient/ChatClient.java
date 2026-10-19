@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ChatClient {
 
     public static void main(String[] args) {
-        String direccionServidor = "localhost";
+        String direccionServidor = args.length > 0 ? args[0] : "localhost";
         int puertoServidor = 9876;
 
         ChatClient cliente = new ChatClient(direccionServidor, puertoServidor);
