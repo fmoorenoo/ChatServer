@@ -77,7 +77,8 @@ public class ChatServer {
                 output.println("Bienveido al chat.");
                 output.println("Ingresa tu nombre de usuario: ");
                 username = input.readLine();
-                if (username == null) {
+                if (username == null || username.isBlank()) {
+                    output.println("Debes introducir un nombre de usuario válido.");
                     return;
                 }
 
