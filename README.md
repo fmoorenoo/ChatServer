@@ -21,11 +21,10 @@
 
 ## Sobre el proyecto
 
-**ChatServer** es una aplicación de mensajería de consola desarrollada en **Java** para practicar **comunicación mediante sockets TCP, arquitectura cliente-servidor y concurrencia**.
+**ChatServer** es un ejercicio de mensajería de consola desarrollada en **Java** para practicar **comunicación mediante sockets TCP, arquitectura cliente-servidor y concurrencia**.
 
 El repositorio contiene dos proyectos independientes: un **servidor** que escucha conexiones en el puerto `9876` y un **cliente** que se conecta a `localhost`, envía mensajes y recibe los publicados por otros participantes.
 
-> Es un ejercicio de comunicación en red, no una plataforma de mensajería preparada para producción.
 
 ## Funcionalidades
 
@@ -37,7 +36,6 @@ El repositorio contiene dos proyectos independientes: un **servidor** que escuch
 - **Recepción concurrente:** cada cliente dispone de un hilo independiente para escuchar nuevos mensajes.
 - **Consola:** lectura y escritura de mensajes sin interfaz gráfica ni dependencias externas.
 
-Estas capacidades se han identificado mediante una revisión estática de los archivos Java. No se han ejecutado pruebas de comunicación durante esta revisión.
 
 ## Tecnologías
 
@@ -89,57 +87,10 @@ El servidor mantiene una lista de clientes activos y utiliza un `ChatThread` por
 
 **Configuración predeterminada:** ambos programas usan `localhost:9876`. Para conectar dispositivos diferentes es necesario adaptar la dirección del servidor en `ChatClient.java` y comprobar la conectividad y el cortafuegos.
 
-## Instalación y ejecución
-
-**Requisito:** JDK 21, de acuerdo con `javac.source` y `javac.target` en los archivos de configuración.
-
-### Opción 1 · Apache NetBeans
-
-1. Clona el repositorio:
-
-   ```bash
-   git clone https://github.com/fmoorenoo/ChatServer.git
-   cd ChatServer
-   ```
-
-2. Abre **ChatServer/** y **ChatClient/** como dos proyectos independientes en NetBeans.
-3. Ejecuta primero el proyecto del servidor.
-4. Inicia una o varias instancias del proyecto cliente.
-
-### Opción 2 · Terminal
-
-Desde la raíz del repositorio, compila el servidor y el cliente:
-
-```bash
-javac -d out/server ChatServer/src/chatserver/ChatServer.java
-javac -d out/client ChatClient/src/chatclient/ChatClient.java
-```
-
-Inicia el servidor en una terminal:
-
-```bash
-java -cp out/server chatserver.ChatServer
-```
-
-En otra terminal, inicia un cliente:
-
-```bash
-java -cp out/client chatclient.ChatClient
-```
-
-Para simular varios usuarios, ejecuta el comando del cliente en terminales adicionales. Estas instrucciones derivan de la estructura del código; no se ha verificado una compilación real durante la auditoría.
 
 ## Estado del proyecto
 
 **Proyecto de práctica de redes y programación concurrente.**
-
-### Consideraciones técnicas
-
-- **Sin cifrado:** la comunicación se realiza mediante TCP sin TLS; no conviene transmitir información sensible.
-- **Identificación no verificada:** el servidor acepta el nombre introducido por el cliente, sin autenticación de usuarios.
-- **Sin historial:** los mensajes no se almacenan en una base de datos.
-- **Puerto fijo:** cliente y servidor utilizan el puerto `9876` definido directamente en el código.
-- **Mantenimiento del repositorio:** existen archivos compilados en `build/` y configuraciones privadas de NetBeans bajo `nbproject/private/`; conviene excluirlos del control de versiones en una futura limpieza.
 
 ## Autor
 
@@ -149,7 +100,3 @@ Para simular varios usuarios, ejecuta el comando del cliente en terminales adici
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Perfil_profesional-712B39?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/fernando-montelongo/)
 
 ---
-
-<div align="center">
-  <sub>ChatServer · Comunicación TCP y concurrencia con Java</sub>
-</div>
